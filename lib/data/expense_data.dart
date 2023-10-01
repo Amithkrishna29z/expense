@@ -1,3 +1,4 @@
+import 'package:expense/data/hive_database.dart';
 import 'package:expense/models/expense_item.dart';
 import 'package:expense/datetime/date_time_helper.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +12,27 @@ class ExpenseData extends ChangeNotifier {
     return OverallExpenseList;
   }
 
+  //prepare data to display
+  final db = HiveDataBase();
+  void prepareData() {
+    //if there exist data,get it
+    if (db.readData().isNotEmpty) {
+      OverallExpenseList = db.readData();
+    }
+  }
+
   //add new expense
-  void addNewExpenses(ExpenseItem newExpense) {
+  void addNewExpense(ExpenseItem newExpense) {
     OverallExpenseList.add(newExpense);
+    notifyListeners();
+    db.saveData(OverallExpenseList);
   }
 
   //delete expense
   void deleteExpense(ExpenseItem expense) {
     OverallExpenseList.remove(expense);
+    notifyListeners();
+    db.saveData(OverallExpenseList);
   }
 
   //get weekday(mon,tues,etc) from a dateTime object
@@ -44,7 +58,7 @@ class ExpenseData extends ChangeNotifier {
   }
 
   //get the date for the start of the week(sunday)
-  DateTime startOfWeekDate() {
+  DateTime? startOfWeekDate() {
     DateTime? startOfWeek;
     //get today date
     DateTime today = DateTime.now();
@@ -52,6 +66,7 @@ class ExpenseData extends ChangeNotifier {
     for (int i = 0; i < 7; i++) {
       if (getDayName(today.subtract(Duration(days: i))) == 'Sun') {
         startOfWeek = today.subtract(Duration(days: i));
+        break;
       }
     }
     return startOfWeek;
@@ -68,7 +83,7 @@ class ExpenseData extends ChangeNotifier {
       double amount = double.parse(expense.amount);
 
       if (dailyExpenseSummary.containsKey(date)) {
-        double currentAmount = dailyExpenseSummary(date)!;
+        double currentAmount = dailyExpenseSummary[date]!;
         currentAmount += amount;
         dailyExpenseSummary[date] = currentAmount;
       } else {
