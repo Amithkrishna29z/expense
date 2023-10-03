@@ -6,7 +6,7 @@ import 'package:expense/components/expense_summary.dart';
 import 'package:expense/data/expense_data.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -150,8 +150,7 @@ class _HomePageState extends State<HomePage> {
                 name: value.getAllExpenseList()[index].name,
                 amount: value.getAllExpenseList()[index].amount,
                 dateTime: value.getAllExpenseList()[index].dateTime,
-                deleteTapped: (p0) =>
-                    deleteExpense(value.getAllExpenseList()[index]),
+              onPressed: null,
               ), //ExpenseTile
             ),
           ])),

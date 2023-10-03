@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 class ExpenseSummary extends StatelessWidget {
   final DateTime startOfWeek;
   const ExpenseSummary({
-    super.key,
+    Key? key,
     required this.startOfWeek,
-  });
+  }) : super(key: key);
 //calculate max amount in bar graph
   double calculateMax(
     ExpenseData value,

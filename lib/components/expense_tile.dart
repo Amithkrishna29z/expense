@@ -8,12 +8,12 @@ class ExpenseTile extends StatelessWidget {
   void Function(BuildContext)? deleteTapped;
 
   ExpenseTile({
-    super.key,
+    Key? key,
     required this.name,
     required this.amount,
     required this.dateTime,
     required dynamic onPressed,
-  });
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) {

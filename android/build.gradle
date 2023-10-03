@@ -28,7 +28,7 @@ subprojects {
             if (project.hasProperty("android")) {
                 android {
                     //compileSdkVersion 30
-                    compileSdkVersion 31 //chnged for testing
+                    compileSdkVersion 33 //chnged for testing
                     defaultConfig {
                         minSdkVersion 16
                        // targetSdkVersion 30

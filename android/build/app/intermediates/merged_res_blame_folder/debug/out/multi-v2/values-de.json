@@ -4,7 +4,7 @@
             "outputFile": "com.example.expense.app-mergeDebugResources-9:/values-de/values-de.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\amith\\.gradle\\caches\\transforms-3\\657234e116902e525fa2b6f7eb2dfd8f\\transformed\\core-1.6.0\\res\\values-de\\values-de.xml",
+                    "source": "C:\\Users\\AnaghaVK\\.gradle\\caches\\transforms-3\\657234e116902e525fa2b6f7eb2dfd8f\\transformed\\core-1.6.0\\res\\values-de\\values-de.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
